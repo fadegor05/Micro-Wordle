@@ -1,0 +1,7 @@
+# Config file
+
+# ----
+# DON'T CHANGE ANYTHING IF YOU DON'T KNOW WHAT YOU ARE ACTUALLY DOING
+# ----
+
+WORDS_FILE = 'words.txt'
