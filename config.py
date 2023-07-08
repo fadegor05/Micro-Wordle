@@ -5,7 +5,7 @@
 # ----
 
 # Other Settings
-WORDS_FILE = 'words.txt'
+WORDS_FILE = 'english.txt'
 
 # Game Settings
 ATTEMPTS = 6
