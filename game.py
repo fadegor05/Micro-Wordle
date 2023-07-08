@@ -29,7 +29,8 @@ class Game:
         # Get guessing loop
         while True:
             # Input the guess
-            guess = input('>> ')
+            try: guess = input('>> ')
+            except KeyboardInterrupt: quit()
             # If wordlist contains guess
             if guess.lower() in self.read_wordlist(): 
                 # Return if it is true
@@ -44,26 +45,30 @@ class Game:
 
     # Main loop function
     def main_loop(self, hidden_word, attempts):
-        # Creating variable that counts attempts
-        attempt = 0
-        # Main loop
-        while True:
-            # Checking don't we run out of attempts
-            if not attempt < attempts: 
-                # If ran out of attempts
-                print('your attempts are out :(')
-                print(f'the word was: {hidden_word}')
-                break
+        # Pre loop
+        guesses = []
 
+        # Main loop
+        for attempt in range(attempts):
             # Guessing the word
-            print(f'attempt {attempt+1}')
-            current_word = self.get_guess()
+            self.draw.update(attempt, guesses, hidden_word)
+            #print(f'attempt {attempt+1}')
+            guesses.append(self.get_guess())
+                
 
             # Checking if word of player equals to hidden word
-            if self.check_word(current_word, hidden_word):
+            if self.check_word(guesses[attempt], hidden_word):
                 # If equals
-                print('hooray')
+                self.draw.update(attempt, guesses, hidden_word)
+                # Draw player win
+                self.draw.win(hidden_word)
                 break
 
             # Adding attempt
-            attempt += 1
+        
+        # After loop
+        else:
+            # Updating
+            self.draw.update(5, guesses, hidden_word)
+            # Draw player lost
+            self.draw.lost(hidden_word)
