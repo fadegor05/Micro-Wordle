@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 
 import.py
+data.json

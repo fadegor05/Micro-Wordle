@@ -9,14 +9,20 @@ class Draw:
         print(f'{Fore.CYAN}by Fadeev Egor{Style.RESET_ALL}\n')
 
     # Lost drawing function
-    def lost(self, hidden_word):
+    def lost(self, hidden_word, stats):
         print(f'\n{Fore.YELLOW}You lost!{Style.RESET_ALL}')
         print(f'{Fore.CYAN}Word: {Style.RESET_ALL}{hidden_word}\n')
+        print(f'{Fore.CYAN}Games: {Style.RESET_ALL}{stats["games"]} {Fore.GREEN}+1')
+        print(f'{Fore.CYAN}Loses: {Style.RESET_ALL}{stats["loses"]} {Fore.YELLOW}+1')
+        print(f'{Fore.CYAN}Wins: {Style.RESET_ALL}{stats["wins"]}\n')
 
     # Win drawing function
-    def win(self, hidden_word):
+    def win(self, hidden_word, stats):
         print(f'\n{Fore.GREEN}You are right!{Style.RESET_ALL}')
         print(f'{Fore.CYAN}Word: {Style.RESET_ALL}{hidden_word}\n')
+        print(f'{Fore.CYAN}Games: {Style.RESET_ALL}{stats["games"]} {Fore.GREEN}+1')
+        print(f'{Fore.CYAN}Wins: {Style.RESET_ALL}{stats["wins"]} {Fore.GREEN}+1')
+        print(f'{Fore.CYAN}Loses: {Style.RESET_ALL}{stats["loses"]}\n')
 
     def print_keyboard(self, symbols, categorized_symbols):
         print(f'{Style.RESET_ALL}')

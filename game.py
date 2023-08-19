@@ -2,6 +2,7 @@ from config import *
 from colorama import init, Fore, Style
 from random import randint
 from draw import Draw
+from score import Score
 import string
 import codecs
 
@@ -10,6 +11,7 @@ class Game:
     # Game init function
     def __init__(self):
         self.draw = Draw()
+        self.score = Score()
         # Start Main loop
         self.main_loop(self.pick_word(), ATTEMPTS, self.get_symbols(WORDS_FILE))
         
@@ -75,7 +77,9 @@ class Game:
                 # If equals
                 self.draw.update(attempt, guesses, hidden_word, symbols)
                 # Draw player win
-                self.draw.win(hidden_word)
+                self.draw.win(hidden_word, self.score.load())
+                # Score changing
+                self.score.save(True)
                 break
 
             # Adding attempt
@@ -85,4 +89,7 @@ class Game:
             # Updating
             self.draw.update(ATTEMPTS-1, guesses, hidden_word, symbols)
             # Draw player lost
-            self.draw.lost(hidden_word)
+            self.draw.lost(hidden_word, self.score.load())
+            # Score changing
+            self.score.save(False)
+
