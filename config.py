@@ -4,8 +4,10 @@
 # DON'T CHANGE ANYTHING IF YOU DON'T KNOW WHAT YOU ARE ACTUALLY DOING
 # ----
 
-# Other Settings
-WORDS_FILE = 'english.txt'
+# file with words that can be picked
+WORDS_FILE = 'words.txt'
+# file with words that can be used in guessing
+GUESSES_FILE = 'guesses.txt'
 
 # Game Settings
 ATTEMPTS = 6
